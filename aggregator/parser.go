@@ -5,6 +5,7 @@ import (
 	"strconv"
 	"strings"
 	"time"
+	"fmt"
 
 	"github.com/kak-tus/loghouse-acceptor/request"
 	"github.com/kshvakov/clickhouse"
@@ -18,7 +19,6 @@ func (a *Aggregator) convert(req request.Request) requestAgg {
 	res.partition = dt.Format(a.config.PartitionFormat)
 
 	args := []interface{}{
-		dt.Format("2006-01-02"),
 		dt.Format("2006-01-02 15:04:05"),
 		dt.Nanosecond(),
 		req.Hostname,
@@ -316,8 +316,8 @@ func (a *Aggregator) parse(req request.Request) []interface{} {
 		res = append(res, [0]int{})
 	}
 
-	res = append(res, phone, requestID, orderID, subscriptionID)
-
+	// res = append(res)
+	fmt.Println(phone, requestID, orderID, subscriptionID)
 	return res
 }
 

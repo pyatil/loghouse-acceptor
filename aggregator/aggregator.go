@@ -60,7 +60,7 @@ func GetAggregator() *Aggregator {
 // Start aggregation
 func (a *Aggregator) Start() {
 	go a.aggregate()
-	go a.db.CreatePartitions(a.config.PartitionFormat)
+	// go a.db.CreatePartitions(a.config.PartitionFormat)
 }
 
 // Stop aggregation
@@ -115,7 +115,9 @@ func (a *Aggregator) send(vals []requestAgg) {
 
 	for i := 0; i < len(vals); i++ {
 		prepared := fmt.Sprintf(sql, vals[i].partition)
-		byDate[sql] = append(byDate[prepared], vals[i].args)
+		fmt.Println("prepared", prepared)
+		fmt.Printf("args: %+v\n", vals[i].args)
+		byDate[prepared] = append(byDate[prepared], vals[i].args)
 	}
 
 	errors := a.db.Send(byDate)

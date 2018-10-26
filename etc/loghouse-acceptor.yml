@@ -8,7 +8,7 @@ log:
     disableTimestamp: true
 
 aggregator:
-  PartitionFormat: '2006010215'
+  PartitionFormat: '20060102'
   Period: '${ACC_PERIOD}'
   Batch: '${ACC_BATCH}'
 

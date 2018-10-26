@@ -31,9 +31,8 @@ type aggregatorConfig struct {
 }
 
 const sql = "INSERT INTO logs.logs%s" +
-	" (date,timestamp,nsec,host,level,tag,pid,caller,msg," +
+	" (timestamp,nsec,source,namespace,host,pod_name,container_name,stream," +
 	"`string_fields.names`,`string_fields.values`," +
 	"`number_fields.names`,`number_fields.values`,`boolean_fields.names`," +
-	"`boolean_fields.values`,`null_fields.names`,phone,request_id,order_id," +
-	"subscription_id) " +
-	"VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);"
+	"`boolean_fields.values`,`null_fields.names`) " +
+	"VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);"
